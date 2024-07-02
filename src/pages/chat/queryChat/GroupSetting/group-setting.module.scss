@@ -1,0 +1,26 @@
+.member-item {
+  @apply mb-3 mr-3 flex w-9 cursor-pointer flex-col items-center;
+
+  // &:nth-child(9n) {
+  //   margin-right: 0;
+  // }
+}
+
+.list-member-item {
+  @apply flex items-center justify-between rounded-md px-3.5 py-2;
+
+  .tool-view {
+    @apply invisible flex items-center;
+    .tool-item {
+      @apply cursor-pointer;
+    }
+  }
+
+  &:hover {
+    @apply bg-[var(--primary-active)];
+
+    .tool-view {
+      @apply visible;
+    }
+  }
+}

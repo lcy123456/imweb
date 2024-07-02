@@ -1,0 +1,27 @@
+.close-icon {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  display: flex;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  padding: 12px;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 18px;
+  z-index: 10;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.operation-wrap {
+  @apply absolute bottom-[25px] left-1/2 w-fit -translate-x-1/2 rounded-full
+  bg-[rgba(0,0,0,.1)] px-[14px] text-lg text-white;
+  .icon {
+    @apply cursor-pointer p-[14px];
+  }
+}

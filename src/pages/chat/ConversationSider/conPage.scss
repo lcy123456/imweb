@@ -1,0 +1,94 @@
+// 弹窗的样式
+.z-dialog {
+  .ant-modal {
+    height: 80vh;
+  }
+  .ant-modal-content {
+    padding: 20px 0 !important;
+    height: 100%;
+  }
+  .ant-modal-body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ant-input-affix-wrapper {
+    margin: 0 24px;
+    width: calc(100% - 50px);
+  }
+
+  .ant-tabs {
+    margin-top: 12px;
+    .ant-tabs-nav-wrap {
+      padding-left: 24px;
+    }
+    .ant-tabs-nav {
+      margin-bottom: 0px;
+    }
+    .ant-tabs-tab {
+      padding: 6px 0;
+    }
+  }
+  .r-content {
+    height: 100%;
+    overflow-y: auto;
+  }
+  .r-flex {
+    display: flex;
+    height: 98%;
+    overflow: hidden;
+  }
+  .records {
+    padding: 0 12px;
+    overflow-y: hidden;
+    margin-top: 0.5rem;
+    .r-title {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    .r-list {
+      flex: 1;
+      overflow: auto;
+      .r-sel {
+        background-color: #f3f8ff;
+      }
+      .r-item {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+          background-color: #f3f8ff;
+        }
+        .r-headImg {
+          width: 40px;
+          height: 40px;
+        }
+        .r-name {
+          font-weight: 14px;
+        }
+        .r-chat {
+          color: #9ca3af;
+        }
+      }
+    }
+
+    // 右侧聊天记录
+    .r-right-record {
+      flex: 1;
+      border-left: 1px solid #f4f5f7;
+      overflow: auto;
+    }
+  }
+
+  // 没有数据
+  .noData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 88%;
+  }
+}

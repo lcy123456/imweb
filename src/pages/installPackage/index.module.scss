@@ -1,0 +1,48 @@
+.installPackage {
+  width: 100vw;
+  height: 100vh;
+  background: url("@/assets/images/installPackage/bg.png");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 20vh;
+  overflow: auto;
+
+  .menuWrap {
+    width: 100%;
+    max-width: 930px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    .menuItem {
+      width: 120px;
+      height: 120px;
+      border: 2px solid #000;
+      border-radius: 100%;
+      margin: 0 40px 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 16px;
+      cursor: pointer;
+      &:last-child {
+        margin-right: 0;
+      }
+      &:hover {
+        border-color: #007dfa;
+        background-color: #007dfa;
+        color: #fff;
+      }
+    }
+  }
+}
+@media screen and (max-width: 930px) {
+  .installPackage {
+    padding-bottom: 0;
+    .menuItem {
+      margin-right: 0 !important;
+    }
+  }
+}

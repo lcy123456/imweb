@@ -1,0 +1,116 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: MiSans-Regular;
+    box-sizing: border-box;
+}
+@font-face {
+  font-family: MiSans-Regular;
+  src: url("../font/MiSans-Regular.ttf") format("truetype");
+}
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+.head-wrap {
+    height: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    background-color: #52c41a;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.notification-wrap-move,
+.notification-wrap-enter-active,
+.notification-wrap-leave-active {
+  transition: all 0.5s ease;
+}
+.notification-wrap-enter-from,
+.notification-wrap-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.notification-wrap-leave-active {
+  position: absolute;
+}
+
+.notification-item {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 20px 0 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 6px;
+}
+.notification-item:hover .right-wrap {
+    visibility: visible;
+}
+
+.notification-item .left-wrap {
+    flex: 0 0 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.notification-item .left-wrap img {
+    width: 100%;
+    height: 100%;
+}
+.notification-item .left-wrap .name-logo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0289fa;
+    color: white;
+}
+.notification-item .center-wrap {
+    margin-right: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.notification-item .center-wrap .send-name {
+    margin-bottom: 4px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.notification-item .center-wrap .send-text {
+    color: #aaa;
+    font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.notification-item .right-wrap {
+    flex: 0 0 30px;
+    text-align: center;
+    align-self: flex-end;
+    margin-bottom: 5px;
+    color: #0289fa;
+    font-size: 14px;
+    cursor: pointer;
+    visibility: hidden;
+}
+.notification-item .close-icon {
+    width: 10px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 999;
+}

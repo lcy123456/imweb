@@ -1,0 +1,23 @@
+@mixin bgBlink($bgColor: #008dff) {
+  animation: _bgBlink 2s;
+  @keyframes _bgBlink {
+    from {
+      background-color: rgba($bgColor, 1);
+    }
+    20% {
+      background-color: rgba($bgColor, 0.8);
+    }
+    40% {
+      background-color: rgba($bgColor, 0.6);
+    }
+    60% {
+      background-color: rgba($bgColor, 0.4);
+    }
+    80% {
+      background-color: rgba($bgColor, 0.2);
+    }
+    to {
+      background-color: rgba($bgColor, 0);
+    }
+  }
+}

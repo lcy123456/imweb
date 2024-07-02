@@ -1,0 +1,116 @@
+.position-active {
+  @include bgBlink();
+}
+.message-container {
+  @apply flex flex-1;
+
+  .message-wrap {
+    @apply flex items-end;
+
+    .menu-wrap {
+      @apply relative flex w-fit flex-col break-all rounded-xl;
+      &.bubble {
+        @apply p-3 py-2;
+        background-color: var(--chat-bubble);
+      }
+      &.special {
+        background-color: #ffeb95 !important;
+      }
+      .time-wrap {
+        @apply mt-1 inline-flex items-center self-end text-xs text-[var(--sub-text)];
+        .suffix {
+          @apply ml-1 flex items-center text-[var(--primary)];
+        }
+      }
+      .absolute-time {
+        @apply absolute bottom-2 right-2;
+      }
+      .absolute-time-bg {
+        color: #fff !important;
+        @apply rounded-3xl bg-[rgba(0,0,0,.2)] px-2 leading-5;
+      }
+    }
+    .fail_icon {
+      @apply mb-1 ml-3;
+    }
+  }
+
+  &-sender {
+    @apply flex-row-reverse;
+
+    .message-wrap {
+      @apply flex-row-reverse;
+
+      .menu-wrap {
+        // @apply items-end;
+        &.bubble {
+          background-color: var(--chat-bubble-sender);
+        }
+        .time-wrap {
+          color: var(--primary);
+        }
+      }
+
+      .fail_icon {
+        @apply ml-0 mr-3;
+      }
+    }
+  }
+}
+
+.card-shadow {
+  @apply w-60 cursor-pointer overflow-hidden rounded-md shadow-md;
+  box-shadow: 3px 3px 8px 1px rgba(81, 94, 112, 0.1);
+}
+
+.bubble {
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.quote-message-container {
+  @apply mb-2 mt-1 flex w-full items-center;
+  & > div:last-child {
+    margin-right: 0;
+  }
+  :global {
+    .media-container {
+      min-width: auto;
+      min-height: auto;
+      width: fit-content;
+      .message-image {
+        .ant-image-img {
+          max-height: 50px;
+          border-radius: 0;
+        }
+      }
+      .play-icon {
+        width: 30px;
+      }
+    }
+    .emoji-inline {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+.custom-message-container {
+  &.call-message-container {
+    width: 180px;
+    padding-left: 35px;
+    & + .time-wrap {
+      align-self: start !important;
+      padding-left: 35px;
+    }
+  }
+}
+
+:global {
+  .message-menu-overlay {
+    .ant-popover-inner {
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+}

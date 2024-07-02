@@ -1,0 +1,79 @@
+{
+  "name": "muskim",
+  "version": "0.0.4",
+  "main": "dist-electron/main/index.js",
+  "description": "MuskIM PC",
+  "author": "lskj",
+  "private": true,
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:7777/"
+    }
+  },
+  "scripts": {
+    "build": "electron-builder",
+    "build:mac": "electron-builder --macos --x64",
+    "build:mac-arm": "electron-builder --macos --arm64",
+    "build:win": "electron-builder --win --x64",
+    "build:win-arm": "electron-builder --win --arm64",
+    "build:linux": "electron-builder --linux --x64",
+    "build:linux-arm": "electron-builder --linux --arm64"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  },
+  "lint-staged": {
+    "src/**/*.{tsx,ts}": ["prettier --write", "eslint --fix"],
+    "*.{json,html,css,scss,xml,md}": ["prettier --write"]
+  },
+  "build": {
+    "appId": "MuskIM",
+    "extends": null,
+    "files": ["dist/**/*", "dist-electron/**/*"],
+    "directories": {
+      "output": "package"
+    },
+    "productName": "MuskIM",
+    "win": {
+      "icon": "./dist/icons/icon.ico"
+    },
+    "mac": {
+      "hardenedRuntime": true,
+      "entitlements": "entitlements.mac.plist",
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "请允许本程序访问您的麦克风",
+        "NSCameraUsageDescription": "请允许本程序访问您的摄像头"
+      },
+      "icon": "./dist/icon.icns",
+      "target": [
+        {
+          "target": "default",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "deleteAppDataOnUninstall": true,
+      "artifactName": "${productName}_${version}.${ext}",
+      "shortcutName": "MuskIM"
+    },
+    "asar": false,
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://127.0.0.1:8080"
+      }
+    ]
+  },
+  "dependencies": {
+    "electron-log": "^4.4.8",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.1.7"
+  }
+}

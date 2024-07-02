@@ -1,0 +1,100 @@
+.room_container {
+  height: 550px !important;
+  background-image: url("@/assets/images/realCallsModal/bg_call.png");
+  background-size: cover;
+
+  .header_container {
+    width: 100%;
+    position: absolute;
+    top: 20px;
+    z-index: 10;
+    padding: 0 30px;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .room_media_wrap {
+    height: 100%;
+    .room_media_item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      video {
+        object-fit: cover !important;
+      }
+    }
+  }
+
+  &.group_container {
+    padding-top: 110px;
+    padding-bottom: 100px;
+    .room_media_wrap {
+      display: flex;
+      flex-wrap: wrap;
+      overflow: auto;
+      // align-items: center;
+      justify-content: center;
+    }
+    .room_media_item {
+      :global {
+        .ant-avatar {
+          width: 100% !important;
+          height: 100% !important;
+          min-width: auto !important;
+          min-height: auto !important;
+          border-radius: 0 !important;
+          display: flex;
+          align-items: center;
+          font-size: 48px !important;
+        }
+      }
+    }
+  }
+  &.alone_container {
+    .room_media_item {
+      height: 100%;
+      &.notFullScreen {
+        width: 100px !important;
+        height: 165px !important;
+        position: absolute;
+        top: 50px;
+        right: 8px;
+        background-color: #000;
+        cursor: pointer;
+        z-index: 10;
+        :global {
+          .ant-avatar {
+            transform: scale(0.5);
+          }
+        }
+      }
+    }
+  }
+
+  .setting_container {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    img {
+      margin: 0 16px;
+      cursor: pointer;
+    }
+  }
+}
+
+.scale_container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  background-image: url("@/assets/images/realCallsModal/bg_call.png");
+  color: white;
+  cursor: pointer;
+  border-radius: 12px;
+}

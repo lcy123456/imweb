@@ -1,0 +1,8 @@
+.merge_modal_container {
+  .merge_message_container {
+    border: 1px solid var(--gap-text);
+  }
+  [class*="time-wrap"] {
+    display: none;
+  }
+}
