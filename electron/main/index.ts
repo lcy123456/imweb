@@ -11,6 +11,7 @@ import createAppMenu from "./menuManage";
 import { isLinux } from "../utils";
 
 const init = () => {
+  console.log("----ppp");
   createMainWindow();
   createNotificationWindow();
   createMediaPreviewWindow();

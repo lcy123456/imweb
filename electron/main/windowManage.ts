@@ -25,7 +25,7 @@ const store = getStore();
 export function createMainWindow() {
   app.commandLine.appendSwitch("ignore-certificate-errors");
   mainWindow = new BrowserWindow({
-    title: "MuskIM",
+    title: "sumi.chat",
     icon: isMac
       ? join(global.pathConfig.publicPath, "/icons/ico.png")
       : join(global.pathConfig.publicPath, "/icons/logo.png"),

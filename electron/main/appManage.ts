@@ -20,7 +20,7 @@ export const setSingleInstance = () => {
 
 export const setAppListener = (startApp: () => void) => {
   app.on("ready", () => {
-    isWin && app.setAppUserModelId("MuskIM");
+    isWin && app.setAppUserModelId("sumi.chat");
   });
   app.on("activate", () => {
     if (isExistMainWindow()) {

@@ -5,9 +5,9 @@ const isDevHttp = getLocalStorage(STORAGEKEYMAP.DEV_HTTP_KEY) as boolean;
 const isProd = import.meta.env.PROD;
 const isEnvTag = isProd ? isDevHttp : false;
 
-const WS_URL_TEST = "wss://test-web.musk-im.life/msg_gateway";
-const API_URL_TEST = "https://test-web.musk-im.life/api";
-const USER_URL_TEST = "https://test-web.musk-im.life/chat";
+const WS_URL_TEST = "wss://api.sumi.chat/open-im-ws";
+const API_URL_TEST = "https://api.sumi.chat/open-im";
+const USER_URL_TEST = "https://api.sumi.chat/im-logic";
 
 export const WS_URL = isEnvTag ? WS_URL_TEST : import.meta.env.VITE_SERVE_WS_URL;
 export const API_URL = isEnvTag ? API_URL_TEST : import.meta.env.VITE_SERVE_API_URL;

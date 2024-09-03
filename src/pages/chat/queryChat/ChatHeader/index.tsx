@@ -8,6 +8,7 @@ import {
   WsResponse,
 } from "open-im-sdk-wasm/lib/types/entity";
 import { memo, useEffect, useMemo, useRef, useState } from "react";
+import { useCopyToClipboard } from "react-use";
 
 import { apiCallInviteOrKick, apiCreateRoom } from "@/api/chatApi";
 import call_video from "@/assets/images/chatHeader/call_video.png";
@@ -50,6 +51,7 @@ const ChatHeader = () => {
     typingStatus,
   } = useConversationStore();
   const { currentCallData, currentRoomStatus } = useRealCallStore();
+  const [_, copyToClipboard] = useCopyToClipboard();
 
   const inGroup = Boolean(currentMemberInGroup?.groupID);
   const isSingle = currentConversation?.conversationType === SessionType.Single;
@@ -62,6 +64,16 @@ const ChatHeader = () => {
     } else {
       actionClick(5);
     }
+  };
+
+  const tryCopy = () => {
+    const str = String(currentConversation?.userID);
+    copyToClipboard(str);
+    feedbackToast({ msg: "复制成功！" });
+  };
+  const goUrl = () => {
+    const url = "https://www.baidu.com";
+    window.openHttp(url);
   };
 
   const menuList = useMemo((): menuItemType[] => {
@@ -90,12 +102,12 @@ const ChatHeader = () => {
         icon: history,
         active_icon: history_active,
       },
-      {
-        idx: 8,
-        title: "视频通话",
-        icon: call_video,
-        active_icon: call_video_active,
-      },
+      //   {
+      //     idx: 8,
+      //     title: "视频通话",
+      //     icon: call_video,
+      //     active_icon: call_video_active,
+      //   },
       {
         idx: 6,
         title: "删除对话",
@@ -295,15 +307,31 @@ const ChatHeader = () => {
               </div>
             )}
           </div>
+          {isSingle && (
+            <div className="flex">
+              <div
+                className="ml-[20px] cursor-pointer rounded-[10px] bg-[#409eff] px-[20px] py-[10px] text-[14px] text-[#fff]"
+                onClick={tryCopy}
+              >
+                复制id
+              </div>
+              <div
+                className="ml-[20px] cursor-pointer rounded-[10px] bg-[#409eff] px-[20px] py-[10px] text-[14px] text-[#fff]"
+                onClick={goUrl}
+              >
+                跳转
+              </div>
+            </div>
+          )}
         </div>
 
-        <div
+        {/* <div
           className={`ml-auto h-[40px] w-[40px] cursor-pointer
           bg-[url("@/assets/images/chatHeader/call_audio.png")] 
           bg-contain bg-center bg-no-repeat
           hover:bg-[url("@/assets/images/chatHeader/call_audio_active.png")]`}
           onClick={() => handleRealCall(RealCallsType.Audio)}
-        ></div>
+        ></div> */}
         <MyPopover
           trigger="click"
           placement="bottomRight"
@@ -314,7 +342,7 @@ const ChatHeader = () => {
           loading={loading}
         >
           <div
-            className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-full
+            className={`ml-auto mr-3 h-[40px] w-[40px] cursor-pointer rounded-full
             bg-[url("@/assets/images/chatHeader/more.png")] bg-contain
             ${
               actionVisible &&

@@ -2,7 +2,7 @@
   "name": "muskim",
   "version": "0.0.4",
   "main": "dist-electron/main/index.js",
-  "description": "MuskIM PC",
+  "description": "sumi.chat PC",
   "author": "lskj",
   "private": true,
   "debug": {
@@ -27,13 +27,13 @@
     "*.{json,html,css,scss,xml,md}": ["prettier --write"]
   },
   "build": {
-    "appId": "MuskIM",
+    "appId": "sumi.chat",
     "extends": null,
     "files": ["dist/**/*", "dist-electron/**/*"],
     "directories": {
       "output": "package"
     },
-    "productName": "MuskIM",
+    "productName": "sumi.chat",
     "win": {
       "icon": "./dist/icons/icon.ico"
     },
@@ -61,7 +61,7 @@
       "createStartMenuShortcut": true,
       "deleteAppDataOnUninstall": true,
       "artifactName": "${productName}_${version}.${ext}",
-      "shortcutName": "MuskIM"
+      "shortcutName": "sumi.chat"
     },
     "asar": false,
     "publish": [

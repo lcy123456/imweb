@@ -174,7 +174,7 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
       </div>
       <div className="mt-4 tracking-wider text-gray-400" hidden={registerForm !== 1}>
         <span>请输入发送至</span>
-        <span className=" text-blue-600">
+        <span className="text-blue-600 ">
           {form.getFieldValue("areaCode")} {form.getFieldValue("phoneNumber")}
         </span>
         <span>的 6 位验证码，有效期 10 分钟</span>
@@ -225,7 +225,7 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
 
         {/* {registerForm >= 1 && (
           <>
-            <Form.Item label="" className="mb-14 mt-8" hidden={registerForm !== 1}>
+            <Form.Item label="" className="mt-8 mb-14" hidden={registerForm !== 1}>
               <div className="flex flex-row items-center justify-center">
                 {code.map((digit, index) => (
                   <Input
@@ -236,21 +236,21 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
                     value={digit}
                     onChange={(e) => handleInputChange(index, e)}
                     onKeyUp={(e) => handleInputKeyUp(index, e)}
-                    className="mr-1 h-11 w-11 text-center text-2xl"
+                    className="mr-1 text-2xl text-center h-11 w-11"
                   />
                 ))}
               </div>
               <div className="mt-4 text-gray-400">
                 {countdown > 0 ? (
                   <>
-                    <span className=" text-blue-500">{countdown}s </span>
+                    <span className="text-blue-500 ">{countdown}s </span>
                     <span>后重新获取验证码</span>
                   </>
                 ) : (
                   <>
                     <span
                       onClick={sendSmsHandle}
-                      className="cursor-pointer text-blue-500"
+                      className="text-blue-500 cursor-pointer"
                     >
                       重新获取
                     </span>

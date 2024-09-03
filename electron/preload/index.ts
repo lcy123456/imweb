@@ -54,5 +54,5 @@ const Api: IElectronAPI = {
   ipcInvoke,
   openExternal,
 };
-
+console.log("111-222");
 contextBridge.exposeInMainWorld("electronAPI", Api);

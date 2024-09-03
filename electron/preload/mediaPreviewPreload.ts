@@ -13,4 +13,5 @@ const Api = {
   ipcInvoke,
 };
 
+console.log("33-44");
 contextBridge.exposeInMainWorld("electronAPI", Api);

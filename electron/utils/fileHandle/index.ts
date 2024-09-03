@@ -11,7 +11,7 @@ import crypto from "crypto";
 import path from "node:path";
 
 const downloadsPath = app.getPath("downloads");
-const saveDownloadsPath = path.join(downloadsPath, "MuskIM Desktop");
+const saveDownloadsPath = path.join(downloadsPath, "sumi.chat Desktop");
 
 const createSaveDownloadsFolder = () => {
   return new Promise((resolve, reject) => {
