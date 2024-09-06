@@ -6,6 +6,8 @@ import { FC, useRef, useState } from "react";
 
 import edit_name from "@/assets/images/chatSetting/edit_name.png";
 
+const { TextArea } = Input;
+
 interface IEditableContentProps {
   editable?: boolean;
   value?: string;
@@ -50,7 +52,7 @@ const EditableContent: FC<IEditableContentProps> = ({
   };
 
   const onPressEnter = async (
-    e: React.KeyboardEvent<HTMLInputElement> & { target: { value: string } },
+    e: React.KeyboardEvent<HTMLTextAreaElement> & { target: { value: string } },
   ) => {
     setEditState((state) => ({ ...state, loading: true }));
     await onChange?.(e.target.value);
@@ -64,15 +66,15 @@ const EditableContent: FC<IEditableContentProps> = ({
   return (
     <div ref={wrapRef} className={clsx("ml-3 flex items-center", className)}>
       {editState.isEdit ? (
-        <Input
+        <TextArea
+          rows={4}
           value={editState.innerValue}
           placeholder={placeholder}
-          maxLength={20}
+          maxLength={200}
           onChange={(e) =>
             setEditState((state) => ({ ...state, innerValue: e.target.value }))
           }
           onPressEnter={onPressEnter}
-          suffix={<EnterOutlined rev={undefined} />}
         />
       ) : (
         <>

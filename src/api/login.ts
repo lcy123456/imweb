@@ -43,7 +43,7 @@ export const useVerifyCode = () => {
         "/account/code/verify",
         {
           ...params,
-          areaCode: getAreaCode(params.areaCode),
+          //   areaCode: getAreaCode(params.areaCode),
         },
         {
           headers: {
@@ -107,7 +107,7 @@ export const useRegister = () => {
           ...params,
           user: {
             ...params.user,
-            areaCode: getAreaCode(params.user.areaCode),
+            // areaCode: getAreaCode(params.user.areaCode),
           },
           platform,
         },
@@ -130,7 +130,7 @@ export const useReset = () => {
         "/account/password/reset",
         {
           ...params,
-          areaCode: params.areaCode && getAreaCode(params.areaCode),
+          //   areaCode: params.areaCode && getAreaCode(params.areaCode),
         },
         {
           headers: {
@@ -181,7 +181,7 @@ export const useLogin = () => {
         {
           ...params,
           platform,
-          areaCode: getAreaCode(params.areaCode),
+          //   areaCode: getAreaCode(params.areaCode),
         },
         {
           headers: {

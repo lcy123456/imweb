@@ -57,7 +57,7 @@ export const Login = () => {
         <LeftBar />
         <div className="flex flex-1 items-center justify-center">
           <div
-            className="relative h-[450px] w-[350px] rounded-md bg-white p-[48px]"
+            className="relative h-[500px] w-[350px] rounded-md bg-white p-[48px]"
             style={{ boxShadow: "0 0 30px rgba(0,0,0,.25)" }}
           >
             {formType === 0 && <LoginForm setFormType={setFormType} />}

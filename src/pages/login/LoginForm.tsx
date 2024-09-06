@@ -75,13 +75,13 @@ const LoginForm = ({ setFormType }: LoginFormProps) => {
 
   return (
     <>
-      <img
-        className="absolute right-0 top-0 cursor-pointer"
+      {/* <img
+        className="absolute top-0 right-0 cursor-pointer"
         src={login_qr}
         alt=""
         onClick={() => setFormType(3)}
         width="80"
-      />
+      /> */}
       <div className="flex items-center text-xl font-bold">
         <span onClick={handleUpdateHttp}>欢迎使用</span>
         <img
@@ -98,12 +98,10 @@ const LoginForm = ({ setFormType }: LoginFormProps) => {
         autoComplete="off"
         className="mt-6"
         initialValues={{
-          areaCode: getLocalStorage(STORAGEKEYMAP.LAST_AREA_CODE) || "+1",
-          phoneNumber: getLocalStorage(STORAGEKEYMAP.LAST_PHONE_NUMBER) || "",
           password: "",
         }}
       >
-        <Form.Item
+        {/* <Form.Item
           label="手机号"
           name="phoneNumber"
           rules={[
@@ -126,6 +124,9 @@ const LoginForm = ({ setFormType }: LoginFormProps) => {
             allowClear
             placeholder="请输入您的手机号"
           />
+        </Form.Item> */}
+        <Form.Item label="用户名" name="account" rules={[{ required: true }]}>
+          <Input allowClear placeholder="请输入您的用户名" />
         </Form.Item>
 
         {loginType === 0 && (
@@ -143,11 +144,11 @@ const LoginForm = ({ setFormType }: LoginFormProps) => {
             <Input.Password allowClear placeholder="请输入您的密码" />
           </Form.Item>
         )}
-        <div>
-          <span className="cursor-pointer text-gray-400" onClick={() => setFormType(1)}>
+        {/* <div>
+          <span className="text-gray-400 cursor-pointer" onClick={() => setFormType(1)}>
             忘记密码
           </span>
-        </div>
+        </div> */}
         <Form.Item className="mt-8">
           <Button type="primary" htmlType="submit" block loading={loginLoading}>
             登录
@@ -163,7 +164,7 @@ const LoginForm = ({ setFormType }: LoginFormProps) => {
             立即注册
           </span>
         </div>
-        <div className="text-center text-gray-400">联系我们：cs@muskim.com</div>
+        <div className="text-center text-gray-400">联系我们：cs@sumi.chat.com</div>
         <Form.Item label="阻止账号回填" hidden={true}>
           <Input.Password autoComplete="new-password" />
         </Form.Item>

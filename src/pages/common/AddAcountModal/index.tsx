@@ -50,7 +50,7 @@ const AddAcountModal: ForwardRefRenderFunction<OverlayVisibleHandle> = (props, r
           password: "",
         }}
       >
-        <Form.Item
+        {/* <Form.Item
           label="手机号"
           name="phoneNumber"
           rules={[
@@ -73,6 +73,10 @@ const AddAcountModal: ForwardRefRenderFunction<OverlayVisibleHandle> = (props, r
             allowClear
             placeholder="请输入您的手机号"
           />
+        </Form.Item> */}
+
+        <Form.Item label="用户名" name="account" rules={[{ required: true }]}>
+          <Input allowClear placeholder="请输入您的用户名" />
         </Form.Item>
         <Form.Item
           label="密码"

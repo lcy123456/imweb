@@ -86,20 +86,20 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
   }, [countdown]);
 
   const onFinish = (fields: FormFields) => {
-    if (registerForm === 0) {
-      sendSms(
-        {
-          usedFor: 1,
-          ...fields,
-        },
-        {
-          onSuccess() {
-            // setCountdown(60);
-            setRegisterForm(2);
-          },
-        },
-      );
-    }
+    // if (registerForm === 0) {
+    //   sendSms(
+    //     {
+    //       usedFor: 1,
+    //       ...fields,
+    //     },
+    //     {
+    //       onSuccess() {
+    //         // setCountdown(60);
+    //         setRegisterForm(2);
+    //       },
+    //     },
+    //   );
+    // }
     // if (registerForm === 1) {
     //   verifyCode(
     //     {
@@ -114,17 +114,19 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
     //     },
     //   );
     // }
-    if (registerForm === 2) {
+    console.log("registerForm--registerForm", registerForm);
+    if (registerForm === 0) {
       register(
         {
-          verifyCode: code.join(""),
+          //   verifyCode: code.join(""),
           autoLogin: true,
           invitationCode: fields.invitationCode,
           user: {
             nickname: fields.nickname,
             faceURL: "",
             areaCode: fields.areaCode,
-            phoneNumber: fields.phoneNumber,
+            // phoneNumber: fields.phoneNumber,
+            account: fields.nickname,
             password: md5(fields.password),
           },
         },
@@ -187,10 +189,10 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
         className="mt-4"
         initialValues={{ areaCode: "+1" }}
       >
-        <Form.Item
+        {/* <Form.Item
           label="手机号"
           name="phoneNumber"
-          hidden={registerForm !== 0}
+          hidden={registerForm === 0}
           rules={[
             { required: true },
             ({ getFieldValue }) => ({
@@ -211,72 +213,32 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
             allowClear
             placeholder="请输入您的手机号"
           />
-        </Form.Item>
+        </Form.Item> */}
 
-        <Form.Item
-          className="mb-24"
-          label="邀请码"
-          name="invitationCode"
-          rules={[{ required: true }]}
-          hidden={registerForm !== 0}
-        >
-          <Input allowClear placeholder="请输入邀请码" />
-        </Form.Item>
-
-        {/* {registerForm >= 1 && (
-          <>
-            <Form.Item label="" className="mt-8 mb-14" hidden={registerForm !== 1}>
-              <div className="flex flex-row items-center justify-center">
-                {code.map((digit, index) => (
-                  <Input
-                    key={index}
-                    ref={(input: InputRef) => (inputRefs[index] = input)}
-                    type="text"
-                    maxLength={1}
-                    value={digit}
-                    onChange={(e) => handleInputChange(index, e)}
-                    onKeyUp={(e) => handleInputKeyUp(index, e)}
-                    className="mr-1 text-2xl text-center h-11 w-11"
-                  />
-                ))}
-              </div>
-              <div className="mt-4 text-gray-400">
-                {countdown > 0 ? (
-                  <>
-                    <span className="text-blue-500 ">{countdown}s </span>
-                    <span>后重新获取验证码</span>
-                  </>
-                ) : (
-                  <>
-                    <span
-                      onClick={sendSmsHandle}
-                      className="text-blue-500 cursor-pointer"
-                    >
-                      重新获取
-                    </span>
-                    <span>验证码</span>
-                  </>
-                )}
-              </div>
-            </Form.Item>
-          </>
-        )} */}
-
-        {registerForm >= 2 && (
+        {registerForm === 0 && (
           <>
             <Form.Item
-              label="昵称"
+              label="用户名"
               name="nickname"
               rules={[{ required: true }]}
-              hidden={registerForm !== 2}
+              hidden={registerForm !== 0}
             >
-              <Input allowClear placeholder="请输入您的昵称" />
+              <Input allowClear placeholder="请输入您的用户名" />
+            </Form.Item>
+            <Form.Item
+              //   className="mb-24"
+              label="邀请码"
+              name="invitationCode"
+              rules={[{ required: true }]}
+              hidden={registerForm !== 0}
+            >
+              <Input allowClear placeholder="请输入邀请码" />
             </Form.Item>
 
             <Form.Item
               label="密码"
               name="password"
-              hidden={registerForm !== 2}
+              hidden={registerForm !== 0}
               rules={[
                 { required: true },
                 {
@@ -291,7 +253,7 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
               label="确认密码"
               name="password2"
               dependencies={["password"]}
-              hidden={registerForm !== 2}
+              hidden={registerForm !== 0}
               rules={[
                 { required: true },
                 ({ getFieldValue }) => ({
@@ -311,7 +273,7 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
 
         <Form.Item>
           <Button type="primary" htmlType="submit" block>
-            {registerForm === 2 ? "完成" : "下一步"}
+            {registerForm === 0 ? "完成" : "下一步"}
           </Button>
         </Form.Item>
 

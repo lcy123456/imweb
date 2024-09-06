@@ -8,28 +8,30 @@ declare namespace API {
       Login = 3,
     }
     type RegisterUserInfo = {
+      account: string;
       nickname: string;
       faceURL: string;
       birth?: number;
       gender?: number;
       email?: string;
       account?: string;
-      areaCode: string;
-      phoneNumber: string;
+      areaCode?: string;
+      phoneNumber?: string;
       password: string;
     };
     type DemoRegisterType = {
       invitationCode?: string;
-      verifyCode: string;
+      //   verifyCode: string;
+      //   account: string;
       deviceID?: string;
       autoLogin?: boolean;
       user: RegisterUserInfo;
     };
     type LoginParams = {
-      verifyCode: string;
+      verifyCode?: string;
       deviceID?: string;
-      phoneNumber: string;
-      areaCode: string;
+      phoneNumber?: string;
+      areaCode?: string;
       account?: string;
       password: string;
     };

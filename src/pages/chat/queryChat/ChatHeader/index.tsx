@@ -67,12 +67,13 @@ const ChatHeader = () => {
   };
 
   const tryCopy = () => {
+    console.log("currentConversation---currentConversation", currentConversation);
     const str = String(currentConversation?.userID);
     copyToClipboard(str);
     feedbackToast({ msg: "复制成功！" });
   };
   const goUrl = () => {
-    const url = "https://www.baidu.com";
+    const url = "https://adsmt.su-mi.net/#/dashboard/user";
     window.openHttp(url);
   };
 
@@ -291,8 +292,8 @@ const ChatHeader = () => {
             size={40}
             onClick={handleClickAvatar}
           />
-          <div className="ml-3 flex h-10.5 flex-col justify-between">
-            <div className="font-sBold text-base">
+          <div className="ml-3 flex flex-col justify-between">
+            <div className="break-all font-sBold text-base">
               {currentConversation?.showName}
               <span className="ml-3 font-sMedium text-sm text-[var(--primary)]">
                 {typingStatus}

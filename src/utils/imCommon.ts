@@ -768,6 +768,7 @@ export const isLikeMessage = (message: MessageItem) => {
 
 export const formatMessageFileUrl = (url: string) => {
   if (!url || /blob|http(s?)|base64|ic_avatar/.test(url)) return url;
-  const { thirdConfig } = useUserStore.getState();
-  return thirdConfig?.oss?.url + url;
+  //   const { thirdConfig } = useUserStore.getState();
+  //   return thirdConfig?.oss?.url + url;
+  return "https://r2.sumi.chat" + url.replace("/openim/openim", "/openim");
 };

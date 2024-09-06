@@ -92,7 +92,7 @@ const ModifyForm = ({ setFormType }: ModifyFormProps) => {
         <LeftOutlined rev={undefined} />
         <span className="ml-1">返回</span>
       </div>
-      <div className="mt-6 text-2xl font-medium">忘记密码</div>
+      {/* <div className="mt-6 text-2xl font-medium">忘记密码</div> */}
       <Form
         form={form}
         layout="vertical"
