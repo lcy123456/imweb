@@ -240,6 +240,12 @@ export interface BusinessUserInfo {
   globalRecvMsgOpt: MessageReceiveOptType;
   isHiddenPhone: BusinessHiddenPhone;
   managerLevel: number;
+  ipAccountList: [];
+  cIDAccountList: [];
+  city: string;
+  country: string;
+  ip: string;
+  cid: string;
 }
 
 export enum BusinessAllowType {

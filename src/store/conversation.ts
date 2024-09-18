@@ -8,6 +8,7 @@ import {
 import { create } from "zustand";
 
 import { apiConversationFolder, ConversationFolderItem } from "@/api/imApi";
+import { getBusinessUserInfo } from "@/api/login";
 import { IMSDK } from "@/layout/MainContentWrap";
 import { feedbackToast, sortByChinesePinyin } from "@/utils/common";
 import { conversationSort, isGroupSession } from "@/utils/imCommon";
@@ -18,6 +19,7 @@ import { useUserStore } from "./user";
 export const useConversationStore = create<ConversationStore>()((set, get) => ({
   conversationList: [],
   currentConversation: undefined,
+  currentConversationUser: undefined,
   unReadCount: 0,
   currentGroupInfo: undefined,
   currentMemberInGroup: undefined,
@@ -91,6 +93,14 @@ export const useConversationStore = create<ConversationStore>()((set, get) => ({
       return;
     }
     const prevConversation = get().currentConversation;
+    getBusinessUserInfo([conversation.userID]).then((res) => {
+      console.log("getBusinessUserInfo--getBusinessUserInfo", res);
+      const { data } = res;
+      const { users } = data;
+      set(() => ({
+        currentConversationUser: users[0],
+      }));
+    });
 
     console.log("prevConversation:::", prevConversation);
 
@@ -162,6 +172,7 @@ export const useConversationStore = create<ConversationStore>()((set, get) => ({
     set(() => ({
       conversationList: [],
       currentConversation: undefined,
+      currentConversationUser: undefined,
       unReadCount: 0,
       currentGroupInfo: undefined,
       currentMemberInGroup: undefined,

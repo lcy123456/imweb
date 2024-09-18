@@ -116,6 +116,7 @@ export type CurrentRoomStatus = {
 export interface ConversationStore {
   conversationList: ConversationItem[];
   currentConversation?: ConversationItem;
+  currentConversationUser?: BusinessUserInfo;
   unReadCount: number;
   currentGroupInfo?: GroupItem;
   currentMemberInGroup?: GroupMemberItem;
