@@ -4,6 +4,7 @@ import { memo, useState } from "react";
 
 import invite_header from "@/assets/images/chatSetting/invite_header.png";
 import search from "@/assets/images/chatSetting/search.png";
+import { useCurrentMemberRole } from "@/hooks/useCurrentMemberRole";
 import { useConversationStore } from "@/store";
 import emitter from "@/utils/events";
 
@@ -23,6 +24,7 @@ const GroupMemberListHeader = ({
 
   // 搜索群成员
   const [isQuery, setIsQuery] = useState<boolean>(false);
+  const { isNomal } = useCurrentMemberRole();
 
   const handleSearch = () => {
     setIsQuery(true);
@@ -66,13 +68,15 @@ const GroupMemberListHeader = ({
         </div>
       ) : (
         <div className="mr-4 flex items-center">
-          <img
-            className="mr-3 cursor-pointer"
-            width={18}
-            src={invite_header}
-            alt=""
-            onClick={inviteToGroup}
-          />
+          {!isNomal && (
+            <img
+              className="mr-3 cursor-pointer"
+              width={18}
+              src={invite_header}
+              alt=""
+              onClick={inviteToGroup}
+            />
+          )}
           <img
             className="mr-3 cursor-pointer"
             width={18}

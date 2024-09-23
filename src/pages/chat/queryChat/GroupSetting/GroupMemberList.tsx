@@ -9,6 +9,8 @@ import { modal } from "@/AntdGlobalComp";
 import member_admin from "@/assets/images/chatSetting/member_admin.png";
 import member_admin_active from "@/assets/images/chatSetting/member_admin_active.png";
 import member_delete from "@/assets/images/chatSetting/member_delete.png";
+import mute from "@/assets/images/chatSetting/mute.png";
+import unmute from "@/assets/images/chatSetting/unmute.png";
 import OIMAvatar from "@/components/OIMAvatar";
 import useGroupMembers from "@/hooks/useGroupMembers";
 import { IMSDK } from "@/layout/MainContentWrap";
@@ -81,7 +83,7 @@ interface ToolItem {
 
 const MemberItem: FC<IMemberItemProps> = ({ member, isOwner, isAdmin }) => {
   const { friendList } = useContactStore();
-  const { roleLevel, groupID, userID } = member;
+  const { roleLevel, groupID, userID, muteEndTime } = member;
   const memberIsOwner = roleLevel === GroupMemberRole.Owner;
   const memberIsAdmin = roleLevel === GroupMemberRole.Admin;
 
@@ -93,6 +95,11 @@ const MemberItem: FC<IMemberItemProps> = ({ member, isOwner, isAdmin }) => {
       title: "移除",
       icon: member_delete,
     };
+    const mute_item = {
+      id: 30,
+      title: muteEndTime > 0 ? "取消禁言" : "禁言",
+      icon: muteEndTime > 0 ? mute : unmute,
+    };
     if (memberIsOwner || (!isOwner && !isAdmin)) return [];
     else if (isOwner) {
       return [
@@ -102,8 +109,12 @@ const MemberItem: FC<IMemberItemProps> = ({ member, isOwner, isAdmin }) => {
           icon: memberIsAdmin ? member_admin_active : member_admin,
         },
         delete_item,
+        mute_item,
       ];
-    } else if (isAdmin && !memberIsAdmin) {
+    } else if (isAdmin) {
+      if (!memberIsAdmin) {
+        return [delete_item, mute_item];
+      }
       return [delete_item];
     }
     return [];
@@ -121,6 +132,10 @@ const MemberItem: FC<IMemberItemProps> = ({ member, isOwner, isAdmin }) => {
         break;
       case 20:
         handleDelete();
+        break;
+      case 30:
+        handleMute();
+        break;
     }
   };
 
@@ -149,6 +164,14 @@ const MemberItem: FC<IMemberItemProps> = ({ member, isOwner, isAdmin }) => {
           feedbackToast({ error, msg: "移除失败" });
         }
       },
+    });
+  };
+  const handleMute = () => {
+    console.log("member-----member", member);
+    IMSDK.changeGroupMemberMute({
+      groupID,
+      userID: member.userID,
+      mutedSeconds: member.muteEndTime > 0 ? 0 : 60 * 60 * 24 * 30 * 12,
     });
   };
 

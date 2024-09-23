@@ -142,7 +142,7 @@ const ModifyForm = ({ setFormType }: ModifyFormProps) => {
                 { required: true },
                 {
                   pattern: RegMap.pwd,
-                  message: "6-20位字符，必须包含字母和数字",
+                  message: "6-18位字符",
                 },
               ]}
             >

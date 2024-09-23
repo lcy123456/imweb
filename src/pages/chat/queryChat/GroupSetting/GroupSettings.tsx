@@ -34,6 +34,7 @@ const GroupSettings = ({
     updateConversationPin,
     updateConversationMessageRemind,
     clearConversationMessages,
+    changeGroupMute,
   } = useConversationSettings();
 
   const { currentGroupInfo, updateGroupInfo, tryQuitGroup, tryDismissGroup } =
@@ -102,7 +103,6 @@ const GroupSettings = ({
           />
         </div>
       </div>
-
       <Divider className="m-0 border-4 border-[#F4F5F7]" />
       {currentGroupInfo && isJoinGroup && (
         <GroupMemberRow
@@ -112,7 +112,6 @@ const GroupSettings = ({
         />
       )}
       <Divider className="m-0 border-4 border-[#F4F5F7]" />
-
       <Divider className="m-0 border-4 border-[#F4F5F7]" />
       <SettingRow className="pb-2" title={"群聊ID"}>
         <div className="flex items-center">
@@ -166,6 +165,15 @@ const GroupSettings = ({
       >
         <RightOutlined rev={undefined} />
       </SettingRow>
+      {(isAdmin || isOwner) && (
+        <SettingRow
+          className="cursor-pointer"
+          title={currentGroupInfo?.status === 3 ? "解除群禁言" : "群禁言"}
+          rowClick={changeGroupMute}
+        >
+          <RightOutlined rev={undefined} />
+        </SettingRow>
+      )}
       <Divider className="m-0 border-4 border-[#F4F5F7]" />
       <div className="flex-1" />
       {isJoinGroup && (

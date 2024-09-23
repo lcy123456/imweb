@@ -136,6 +136,10 @@ const UserCardModal: ForwardRefRenderFunction<
     let tmpFields = [] as FieldRow[];
     tmpFields.push({
       title: "用户名",
+      value: info.account || "",
+    });
+    tmpFields.push({
+      title: "昵称",
       value: info.nickname || "",
     });
     const isFriend = info?.remark !== undefined;

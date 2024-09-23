@@ -116,6 +116,8 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
     // }
     console.log("registerForm--registerForm", registerForm);
     if (registerForm === 0) {
+      const num = Math.floor(Math.random() * 20) + 1;
+      const faceURL = `ic_avatar_${num < 10 ? `0${num}` : num}`;
       register(
         {
           //   verifyCode: code.join(""),
@@ -123,7 +125,7 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
           invitationCode: fields.invitationCode,
           user: {
             nickname: fields.nickname,
-            faceURL: "",
+            faceURL,
             areaCode: fields.areaCode,
             // phoneNumber: fields.phoneNumber,
             account: fields.nickname,
@@ -225,15 +227,6 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
             >
               <Input allowClear placeholder="请输入您的用户名" />
             </Form.Item>
-            <Form.Item
-              //   className="mb-24"
-              label="邀请码"
-              name="invitationCode"
-              rules={[{ required: true }]}
-              hidden={registerForm !== 0}
-            >
-              <Input allowClear placeholder="请输入邀请码" />
-            </Form.Item>
 
             <Form.Item
               label="密码"
@@ -243,7 +236,7 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
                 { required: true },
                 {
                   pattern: RegMap.pwd,
-                  message: "6-20位字符，必须包含字母和数字",
+                  message: "6-18位字符",
                 },
               ]}
             >
@@ -267,6 +260,15 @@ const RegisterForm = ({ setFormType }: RegisterFormProps) => {
               ]}
             >
               <Input.Password allowClear placeholder="请再次确认您的密码" />
+            </Form.Item>
+            <Form.Item
+              //   className="mb-24"
+              label="邀请码"
+              name="invitationCode"
+              rules={[{ required: true }]}
+              hidden={registerForm !== 0}
+            >
+              <Input allowClear placeholder="请输入邀请码" />
             </Form.Item>
           </>
         )}

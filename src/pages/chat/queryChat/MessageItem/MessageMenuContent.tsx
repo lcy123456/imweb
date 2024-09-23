@@ -39,6 +39,7 @@ import save_active from "@/assets/images/messageMenu/save_active.png";
 import MyPopover, { menuItemType, PopoverContent } from "@/components/MyPopover";
 import OIMAvatar from "@/components/OIMAvatar";
 import { FileMessageTypes, TextMessageTypes } from "@/constants";
+import { useCurrentMemberRole } from "@/hooks/useCurrentMemberRole";
 import useFavoriteEmoji from "@/hooks/useFavoriteEmoji";
 import { IMSDK } from "@/layout/MainContentWrap";
 import {
@@ -93,6 +94,7 @@ const MessageMenuContent = ({
   } = message;
   const senderIsOwner = sendID === ownerUserID;
   const isSender = sendID === selfUserID;
+  const { isNomal } = useCurrentMemberRole();
 
   const getPinnedMessageList = useMessageStore((state) => state.getPinnedMessageList);
   const pinnedMessageList = useMessageStore((state) => state.pinnedMessageList);
@@ -107,7 +109,6 @@ const MessageMenuContent = ({
   const isPinned = useMemo(() => {
     return pinnedMessageList.some((v) => v.clientMsgID === clientMsgID);
   }, [pinnedMessageList]);
-
   const messageMenuList = useMemo(() => {
     const list = (
       [
@@ -197,7 +198,8 @@ const MessageMenuContent = ({
         (isSpecial && [1, 9].includes(v.idx as number)) ||
         ([2].includes(v.idx as number) && !TextMessageTypes.includes(contentType)) ||
         (v.idx === 5 && !isSender) ||
-        (v.idx === 6 && (sessionType === SessionType.Single ? false : !isSender)) ||
+        (v.idx === 6 &&
+          (sessionType === SessionType.Single ? false : isSender ? false : isNomal)) ||
         (v.idx === 7 &&
           ![
             ...TextMessageTypes,

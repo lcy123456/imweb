@@ -85,10 +85,17 @@ const EditSelfInfo: ForwardRefRenderFunction<OverlayVisibleHandle, Props> = (
       >
         <Form.Item
           label="用户名"
-          name="nickname"
+          name="account"
           rules={[{ required: true, max: 20, message: "请输入用户名！" }]}
         >
           <Input disabled />
+        </Form.Item>
+        <Form.Item
+          label="昵称"
+          name="nickname"
+          rules={[{ required: true, max: 20, message: "请输入昵称！" }]}
+        >
+          <Input />
         </Form.Item>
         <Form.Item label="性别" name="gender">
           <Select>

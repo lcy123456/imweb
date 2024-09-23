@@ -320,7 +320,7 @@ const ChatHeader = () => {
               <div className="ml-3 flex flex-col justify-between">
                 <div className="break-all font-sBold text-base">
                   <span>IP: {currentConversationUser?.ipAccountList?.length} </span>
-                  <span>UUID: {currentConversationUser?.ipAccountList?.length}</span>
+                  <span>UUID: {currentConversationUser?.cIDAccountList?.length}</span>
                 </div>
                 <div className="flex items-center">
                   <span>{currentConversationUser?.country} </span>
@@ -328,12 +328,12 @@ const ChatHeader = () => {
                   <span>{currentConversationUser?.ip}</span>
                 </div>
               </div>
-              <div
+              {/* <div
                 className="ml-[20px] cursor-pointer rounded-[10px] bg-[#409eff] px-[20px] py-[10px] text-[14px] text-[#fff]"
                 onClick={goUrl}
               >
                 跳转
-              </div>
+              </div> */}
             </div>
           )}
         </div>

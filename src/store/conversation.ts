@@ -98,7 +98,7 @@ export const useConversationStore = create<ConversationStore>()((set, get) => ({
       const { data } = res;
       const { users } = data;
       set(() => ({
-        currentConversationUser: users[0],
+        currentConversationUser: users ? users[0] : undefined,
       }));
     });
 

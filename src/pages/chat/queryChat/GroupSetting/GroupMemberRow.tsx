@@ -54,16 +54,18 @@ const GroupMemberRow = ({
           //   onClick={() => window.userClick(member.userID, member.groupID)}
           // >
           //   <OIMAvatar src={member.faceURL} text={member.nickname} size={36} />
-          //   <div className="mt-2 max-w-full truncate text-xs">{member.nickname}</div>
+          //   <div className="max-w-full mt-2 text-xs truncate">{member.nickname}</div>
           // </div>
           <GroupMemberCeil key={member.userID} member={member}></GroupMemberCeil>
         ))}
-        <div className={styles["member-item"]} onClick={inviteMember}>
-          <img width={36} src={invite} alt="invite" />
-          <div className="mt-2 max-w-full truncate text-xs text-[var(--sub-text)]">
-            添加
+        {!isNomal && (
+          <div className={styles["member-item"]} onClick={inviteMember}>
+            <img width={36} src={invite} alt="invite" />
+            <div className="mt-2 max-w-full truncate text-xs text-[var(--sub-text)]">
+              添加
+            </div>
           </div>
-        </div>
+        )}
         {!isNomal && (
           <div className={styles["member-item"]} onClick={kickMember}>
             <img width={36} src={kick} alt="kick" />

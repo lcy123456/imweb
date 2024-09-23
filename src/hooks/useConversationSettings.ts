@@ -10,6 +10,7 @@ import { feedbackToast } from "@/utils/common";
 export function useConversationSettings() {
   const { modal } = App.useApp();
 
+  const currentGroupInfo = useConversationStore.getState().currentGroupInfo;
   const currentConversation = useConversationStore(
     (state) => state.currentConversation,
   );
@@ -64,11 +65,19 @@ export function useConversationSettings() {
       },
     });
   }, [currentConversation?.conversationID]);
+  const changeGroupMute = useCallback(() => {
+    if (!currentConversation) return;
+    IMSDK.changeGroupMute({
+      groupID: currentConversation.groupID,
+      isMute: currentGroupInfo?.status !== 3,
+    });
+  }, [currentConversation?.conversationID]);
 
   return {
     currentConversation,
     updateConversationPin,
     updateConversationMessageRemind,
     clearConversationMessages,
+    changeGroupMute,
   };
 }

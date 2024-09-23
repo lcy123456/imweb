@@ -9,6 +9,20 @@ const avatar = {
   ic_avatar_04: "./images/avatar/ic_avatar_04.png",
   ic_avatar_05: "./images/avatar/ic_avatar_05.png",
   ic_avatar_06: "./images/avatar/ic_avatar_06.png",
+  ic_avatar_07: "./images/avatar/ic_avatar_07.png",
+  ic_avatar_08: "./images/avatar/ic_avatar_08.png",
+  ic_avatar_09: "./images/avatar/ic_avatar_09.png",
+  ic_avatar_10: "./images/avatar/ic_avatar_10.png",
+  ic_avatar_11: "./images/avatar/ic_avatar_11.png",
+  ic_avatar_12: "./images/avatar/ic_avatar_12.png",
+  ic_avatar_13: "./images/avatar/ic_avatar_13.png",
+  ic_avatar_14: "./images/avatar/ic_avatar_14.png",
+  ic_avatar_15: "./images/avatar/ic_avatar_15.png",
+  ic_avatar_16: "./images/avatar/ic_avatar_16.png",
+  ic_avatar_17: "./images/avatar/ic_avatar_17.png",
+  ic_avatar_18: "./images/avatar/ic_avatar_18.png",
+  ic_avatar_19: "./images/avatar/ic_avatar_19.png",
+  ic_avatar_20: "./images/avatar/ic_avatar_20.png",
 };
 
 const { createApp, ref, toRefs, computed, TransitionGroup, watch } = Vue;
