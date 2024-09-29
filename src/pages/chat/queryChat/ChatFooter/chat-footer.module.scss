@@ -42,8 +42,9 @@
   :global {
     .DraftEditor-root {
       max-height: 200px;
-      min-height: 30px;
-      font-size: 16px;
+      min-height: 20px;
+      font-size: 12px;
+      line-height: 15px;
       overflow: auto;
       &::-webkit-scrollbar {
         display: none;

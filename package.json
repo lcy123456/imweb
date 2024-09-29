@@ -1,5 +1,5 @@
 {
-  "name": "sumi.chat-2",
+  "name": "sumi.chat-1",
   "version": "1.0.0",
   "main": "dist-electron/main/index.js",
   "description": "sumi.chat PC",
@@ -127,7 +127,7 @@
     "electron-updater": "^6.1.7"
   },
   "build": {
-    "appId": "sumi.chat",
+    "appId": "sumi.chat-1",
     "extends": null,
     "files": [
       "dist/**/*",
@@ -136,7 +136,7 @@
     "directories": {
       "output": "package"
     },
-    "productName": "sumi.chat",
+    "productName": "sumi.chat-1",
     "win": {
       "icon": "./dist/icons/icon.ico"
     },
@@ -166,7 +166,7 @@
       "createStartMenuShortcut": true,
       "deleteAppDataOnUninstall": true,
       "artifactName": "${productName}_${version}.${ext}",
-      "shortcutName": "sumi.chat"
+      "shortcutName": "sumi.chat-1"
     },
     "asar": false,
     "publish": [

@@ -621,7 +621,7 @@ const SendEditor = (props: Props, ref: ForwardedRef<SendEditorHandle>) => {
       <div id="myEditor" className={String(styles["editor-wrap"])}>
         <Editor
           ref={editorRef}
-          placeholder="Enter发送/Shift+Enter换行"
+          //   placeholder="Enter发送/Shift+Enter换行"
           editorState={editorState}
           onChange={handleChange}
           keyBindingFn={myKeyBindingFn}

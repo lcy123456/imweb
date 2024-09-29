@@ -25,13 +25,13 @@ const store = getStore();
 export function createMainWindow() {
   app.commandLine.appendSwitch("ignore-certificate-errors");
   mainWindow = new BrowserWindow({
-    title: "sumi.chat",
+    title: "sumi.chat-1",
     icon: isMac
       ? join(global.pathConfig.publicPath, "/icons/ico.png")
       : join(global.pathConfig.publicPath, "/icons/logo.png"),
     frame: false,
-    minWidth: 990,
-    minHeight: 700,
+    // minWidth: 990,
+    // minHeight: 700,
     width: 990,
     height: 700,
     titleBarStyle: "hiddenInset",

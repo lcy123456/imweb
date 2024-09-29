@@ -3,9 +3,15 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontSize: {
+        base: "0.8rem",
+      },
+      lineHeight: {
+        base: "1.3rem",
+      },
       fontFamily: {
-        sBold: ['MiSans-Demibold'],
-        sMedium: ['MiSans-Medium'],
+        sBold: ["MiSans-Demibold"],
+        sMedium: ["MiSans-Medium"],
       },
       padding: {
         1.5: "0.375rem",
