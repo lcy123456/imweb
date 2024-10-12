@@ -282,11 +282,11 @@ const AtActionBar = (props: AtActionBarProps) => {
   const handleClickMember = (index: number) => {
     const member = showAtList[index];
     if (!member) return;
-    const friend = friendList.find((j) => j.userID === member.userID);
-    const nickname = friend?.remark || member.nickname;
+    // const friend = friendList.find((j) => j.userID === member.userID);
+    // const nickname = friend?.remark || member.nickname;
     clickAtMember({
       ...member,
-      nickname,
+      nickname: member.nickname,
     });
   };
 
