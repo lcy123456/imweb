@@ -26,7 +26,7 @@ interface Props {
   sendLoading?: boolean;
 }
 const EmojiPopContent = ({ handleSendGif, sendLoading }: Props) => {
-  const [menuIndex, setMenuIndex] = useState(1);
+  const [menuIndex, setMenuIndex] = useState(0);
 
   const handleEmojiClick = (emoji: EmojiItem) => {
     emitter.emit("EDITOR_INSET_EMOJI", emoji);
@@ -39,16 +39,16 @@ const EmojiPopContent = ({ handleSendGif, sendLoading }: Props) => {
           className="flex h-full transition-transform"
           style={{ transform: `translateX(-${menuIndex * 100}%)` }}
         >
-          <SearchGifPane
+          {/* <SearchGifPane
             handleSendGif={handleSendGif}
             sendLoading={sendLoading}
-          ></SearchGifPane>
+          ></SearchGifPane> */}
           <EmojiTabPane handleEmojiClick={handleEmojiClick} />
-          <SearchGifPane
+          {/* <SearchGifPane
             handleSendGif={handleSendGif}
             sendLoading={sendLoading}
             isFavorite={true}
-          ></SearchGifPane>
+          ></SearchGifPane> */}
         </div>
       </div>
       <Divider className="border-1 m-0 border-[var(--gap-text)]" />
@@ -78,21 +78,21 @@ const EmojiPopContent = ({ handleSendGif, sendLoading }: Props) => {
 export default EmojiPopContent;
 
 const menuList = [
-  {
-    key: "search",
-    icon: search_icon,
-    active_icon: search_icon,
-  },
+  // {
+  //   key: "search",
+  //   icon: search_icon,
+  //   active_icon: search_icon,
+  // },
   {
     key: "emoji",
     icon: emoji_pop,
     active_icon: emoji_pop_active,
   },
-  {
-    key: "favorite",
-    icon: favorite,
-    active_icon: favorite_active,
-  },
+  // {
+  //   key: "favorite",
+  //   icon: favorite,
+  //   active_icon: favorite_active,
+  // },
 ];
 
 const EmojiTabPane = ({

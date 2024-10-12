@@ -221,7 +221,7 @@ const AtActionBar = (props: AtActionBarProps) => {
       const all = {
         userID: AtAllId,
         faceURL: "",
-        nickname: "所有人",
+        nickname: "모두", // 所有人
       };
       const text = atFilterText.slice(1);
       all.nickname.includes(text) && arr.unshift(all);

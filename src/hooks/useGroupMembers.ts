@@ -4,7 +4,7 @@ import { GroupMemberItem, WSEvent } from "open-im-sdk-wasm/lib/types/entity";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { IMSDK } from "@/layout/MainContentWrap";
-import { useConversationStore } from "@/store";
+import { useContactStore, useConversationStore } from "@/store";
 import { feedbackToast } from "@/utils/common";
 
 export const REACH_SEARCH_FLAG = "LAST_FLAG";
@@ -22,8 +22,11 @@ interface UseGroupMembersProps {
   groupID?: string;
   notRefresh?: boolean;
 }
-
+interface RemarkGroupMemberItem extends GroupMemberItem {
+  remark?: string;
+}
 export default function useGroupMembers(props?: UseGroupMembersProps) {
+  const { friendList } = useContactStore();
   const { groupID, notRefresh } = props ?? {};
   const [fetchState, setFetchState] = useState<FetchStateType>({
     offset: 0,
@@ -114,22 +117,31 @@ export default function useGroupMembers(props?: UseGroupMembersProps) {
   }, [myGroupID]);
 
   const searchMember = useCallback(
-    async (keyword: string) => {
+    (keyword: string) => {
       if (fetchState.loading || !myGroupID) return;
       setFetchState((state) => ({
         ...state,
         loading: true,
       }));
       try {
-        const { data } = await IMSDK.searchGroupMembers({
-          groupID: myGroupID,
-          offset: 0,
-          count: 99,
-          keywordList: [keyword],
-          isSearchMemberNickname: true,
-          isSearchUserID: false,
-        });
-        // console.log("search", data);
+        // const { data } = await IMSDK.searchGroupMembers({
+        //   groupID: myGroupID,
+        //   offset: 0,
+        //   count: 99,
+        //   keywordList: [keyword],
+        //   isSearchMemberNickname: true,
+        //   isSearchUserID: false,
+        // });
+        console.log("search--------------------", fetchState.groupMemberList);
+        const data = fetchState.groupMemberList.filter(
+          (item: RemarkGroupMemberItem) => {
+            return (
+              item.nickname.includes(keyword) ||
+              item.userID.includes(keyword) ||
+              (item?.remark && item?.remark.includes(keyword))
+            );
+          },
+        );
         setFetchState((state) => ({
           ...state,
           searchMemberList: [...data],
@@ -166,6 +178,13 @@ export default function useGroupMembers(props?: UseGroupMembersProps) {
           count: 20,
           filter: 0,
         });
+        (data as RemarkGroupMemberItem[]).forEach((member) => {
+          const find = friendList.find((item) => item.userID === member.userID);
+          if (find) {
+            member.remark = find.remark;
+          }
+        });
+        console.log("🚀 ~ data:", data);
         setFetchState((state) => ({
           ...state,
           groupMemberList: refresh ? data : [...state.groupMemberList, ...data],

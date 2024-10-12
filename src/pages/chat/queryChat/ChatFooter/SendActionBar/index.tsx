@@ -188,14 +188,14 @@ interface SendActionItem {
   showPopover: boolean;
 }
 const sendActionList: SendActionItem[] = [
-  //   {
-  //     title: "表情",
-  //     icon: emoji,
-  //     key: "emoji",
-  //     comp: <EmojiPopContent />,
-  //     placement: "topLeft",
-  //     showPopover: true,
-  //   },
+  {
+    title: "表情",
+    icon: emoji,
+    key: "emoji",
+    comp: <EmojiPopContent />,
+    placement: "topLeft",
+    showPopover: true,
+  },
   {
     title: "更多",
     icon: more,
