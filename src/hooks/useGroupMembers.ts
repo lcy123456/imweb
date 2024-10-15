@@ -30,7 +30,7 @@ export default function useGroupMembers(props?: UseGroupMembersProps) {
   const { groupID, notRefresh } = props ?? {};
   const [fetchState, setFetchState] = useState<FetchStateType>({
     offset: 0,
-    count: 20,
+    count: 99999,
     loading: false,
     hasMore: true,
     groupMemberList: [],
@@ -136,9 +136,10 @@ export default function useGroupMembers(props?: UseGroupMembersProps) {
         const data = fetchState.groupMemberList.filter(
           (item: RemarkGroupMemberItem) => {
             return (
-              item.nickname.includes(keyword) ||
+              item.nickname.toLowerCase().includes(keyword.toLowerCase()) ||
               item.userID.includes(keyword) ||
-              (item?.remark && item?.remark.includes(keyword))
+              (item?.remark &&
+                item?.remark.toLowerCase().includes(keyword.toLowerCase()))
             );
           },
         );
@@ -175,7 +176,7 @@ export default function useGroupMembers(props?: UseGroupMembersProps) {
         const { data } = await IMSDK.getGroupMemberList({
           groupID: myGroupID,
           offset: refresh ? 0 : fetchState.offset,
-          count: 20,
+          count: 99999,
           filter: 0,
         });
         (data as RemarkGroupMemberItem[]).forEach((member) => {
@@ -208,7 +209,7 @@ export default function useGroupMembers(props?: UseGroupMembersProps) {
   const resetState = () => {
     setFetchState({
       offset: 0,
-      count: 20,
+      count: 99999,
       loading: false,
       hasMore: true,
       groupMemberList: [],
