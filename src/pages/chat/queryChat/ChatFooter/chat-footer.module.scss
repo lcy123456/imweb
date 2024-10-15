@@ -38,7 +38,8 @@
 
 .editor-wrap {
   @apply flex-1 self-center overflow-hidden;
-  padding: 6px 18px 0px;
+  padding: 0px 18px 0px;
+
   :global {
     .DraftEditor-root {
       max-height: 200px;
@@ -46,27 +47,31 @@
       font-size: 12px;
       line-height: 15px;
       overflow: auto;
+
       &::-webkit-scrollbar {
         display: none;
       }
     }
+
     .emoji-el {
       display: inline-block;
       position: relative;
       caret-color: #1f1f1f;
       color: transparent;
+
       span span {
         padding: 0 0 0 6px;
       }
+
       &::after {
         content: "";
-        background: var(--url) left center no-repeat;
-        background-size: 30px;
-        width: 30px;
-        height: 30px;
+        background: var(--url) center center no-repeat;
+        background-size: 100% 100%;
+        width: 18px;
+        height: 18px;
         position: absolute;
         left: 0px;
-        top: -2px;
+        top: 0px;
       }
     }
   }

@@ -107,7 +107,13 @@ const EmojiTabPane = ({
         key={emoji.context}
         onClick={() => handleEmojiClick(emoji)}
       >
-        <img src={emoji.src} alt={emoji.context} />
+        <img
+          src={emoji.src}
+          alt={emoji.context}
+          width="30px"
+          height="30px"
+          className="mb-1"
+        />
       </div>
     ))}
   </div>
