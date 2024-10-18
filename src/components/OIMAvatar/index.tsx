@@ -77,7 +77,12 @@ const OIMAvatar: FC<IOIMAvatarProps> = (props) => {
 
   const getAvatarUrl = useMemo((): ReactNode => {
     if (src) {
-      return avatar[src] ? avatar[src] : formatMessageFileUrl(src);
+      let newSrc = src.replace("/static/defaultAvatars/", "");
+      if (newSrc !== src) {
+        newSrc = newSrc.replace(".png", "");
+      }
+
+      return avatar[newSrc] ? avatar[newSrc] : formatMessageFileUrl(newSrc);
     }
     return isgroup ? default_group : undefined;
   }, [src, isgroup]);
