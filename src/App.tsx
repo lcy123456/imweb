@@ -2,6 +2,7 @@
 import { App as AntdApp, ConfigProvider } from "antd";
 import enUS from "antd/locale/en_US";
 import zhCN from "antd/locale/zh_CN";
+import dayjs from "dayjs";
 import { Suspense } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 // import { ReactQueryDevtools } from "react-query/devtools";
@@ -24,6 +25,22 @@ function App() {
       },
     },
   });
+  window.console.error =
+    window.console.info =
+    window.console.log =
+      function (...args) {
+        try {
+          const msg = args
+            .map((v) => JSON.stringify(v))
+            .join(" ")
+            .replace("/", "");
+          window.electronAPI?.ipcInvoke("setFile", {
+            msg: `${dayjs(Number(new Date())).format(`YYYY-MM-DD HH:mm:ss`)} ${msg}\n`,
+          });
+        } catch (err) {
+          console.error(err);
+        }
+      };
 
   return (
     <ConfigProvider

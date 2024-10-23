@@ -12,6 +12,7 @@ import {
   notificationHeight,
   mediaPreviewShow,
   mediaPreviewHide,
+  handleWriteLog,
 } from "./windowManage";
 import { IpcRenderToMain } from "../constants";
 import { getStore } from "./storeManage";
@@ -102,5 +103,8 @@ export const setIpcMainListener = () => {
       log.error(err);
       throw new Error(err);
     }
+  });
+  ipcMain.handle(IpcRenderToMain.setFile, async (_, { msg }) => {
+    handleWriteLog(msg);
   });
 };

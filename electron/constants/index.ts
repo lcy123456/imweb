@@ -28,4 +28,5 @@ export const IpcRenderToMain = {
   saveAsFile: "saveAsFile",
   cacheFile: "cacheFile",
   getFile: "getFile",
+  setFile: "setFile",
 };

@@ -13,6 +13,8 @@ import { getStore } from "./storeManage";
 import { getIsForceQuit } from "./appManage";
 import { traySetTitle } from "./trayManage";
 import { handleUpdate } from "../utils/autoUpdater";
+import fs from "fs";
+import path from "path";
 
 const url = process.env.VITE_DEV_SERVER_URL;
 let mainWindow: BrowserWindow | null = null;
@@ -284,3 +286,40 @@ export const handleWindowPort = () => {
   mainWindow.webContents.postMessage("mediaPreviewPort", null, [port3]);
   mediaPreviewWindow.webContents.postMessage("mediaPreviewPort", null, [port4]);
 };
+
+export const handleWriteLog = (content) => {
+  const filePath = path.join(__dirname, "log.txt");
+  writeFile(filePath, content)
+    .then(() => console.log("文件已保存。", content))
+    .catch((err) => console.error(err));
+};
+// 写入文件的函数
+function writeFile(filePath, content) {
+  return new Promise<void>((resolve, reject) => {
+    fs.access(filePath, fs.constants.F_OK, (err) => {
+      if (err) {
+        // 文件不存在，先创建文件
+        fs.writeFile(filePath, content, (err) => {
+          if (err) {
+            console.error("创建文件失败:", err);
+            reject();
+          } else {
+            console.log("文件创建成功:", filePath);
+            resolve();
+          }
+        });
+      } else {
+        // 文件存在，追加内容
+        fs.appendFile(filePath, content, (err) => {
+          if (err) {
+            console.error("追加内容失败:", err);
+            reject();
+          } else {
+            console.log("内容已添加到文件:", filePath);
+            resolve();
+          }
+        });
+      }
+    });
+  });
+}
